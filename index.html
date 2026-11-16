@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +15,10 @@
     <span>Cadastro de participantes</span>
     <h3>Registre alunos, instrutores e demais pessoas vinculadas à sua turma.</h3>
     <p>
-Use apenas dados fictícios. O LocalStorage mantém as informações neste navegador e não é adequado para armazenar dados pessoais reais ou sensíveis sem cuidados</p>
-<p>específicos de segurança e privacidade.</p>
+Use apenas dados fictícios. O LocalStorage mantém as informações neste navegador e não é adequado para armazenar dados pessoais reais ou sensíveis sem cuidados específicos de segurança e privacidade.</p>
  <section id="Contato">
     <h2>Novo cadastro</h2>
-    <P>Campos com * são obrigatórios</P>
+    <p>Campos com * são obrigatórios</p>
     <form id="form-cadastro">
         <div class="form-group">
             <label for="nome">Nome Completo*</label>
@@ -31,7 +30,7 @@ Use apenas dados fictícios. O LocalStorage mantém as informações neste naveg
         </div>
         <div class="form-group">
             <label for="vinculo">Vinculo com o SENAI*</label>
-            <select>
+            <select id="vinculo" name="vinculo" required>
                 <option value="aluno">Aluno</option>
                 <option value="professor">Professor</option>
                 <option value="outros">Outros</option>
@@ -46,39 +45,40 @@ Use apenas dados fictícios. O LocalStorage mantém as informações neste naveg
 
            <div class="input-group">
             <label for="cep">CEP*</label>
-            <input type="text" id="cep" placeholder="00000-000" maxlength="9" required>
+            <input type="text" name="cep" id="cep" placeholder="00000-000" maxlength="9" required>
         </div>
         <div class="input-group">
             <label for="logradouro">Logradouro*</label>
-            <input type="text" id="logradouro" placeholder="Rua,avenida..." readonly required>
+            <input type="text" name="logradouro" id="logradouro" placeholder="Rua,avenida..." readonly required>
         </div>
 
         <div class="input-group">
             <label for="numero">Número*</label>
-            <input type="text" id="numero" placeholder="Ex.:120" required>
+            <input type="text" name="numero" id="numero" placeholder="Ex.:120" required>
         </div>
 
         <div class="input-group">
             <label for="complemento">Complemento</label>
-            <input type="text" id="complemento" placeholder="Apto.,bloco...">
+            <input type="text" name="complemento" id="complemento" placeholder="Apto.,bloco...">
         </div>
 
         <div class="input-group">
             <label for="bairro">Bairro*</label>
-            <input type="text" id="bairro" placeholder="Bairro" readonly required>
+            <input type="text" name="bairro" id="bairro" placeholder="Bairro" readonly required>
         </div>
 
         <div class="input-group">
         <label for="cidade">Cidade*</label>
-            <input type="text" id="cidade" placeholder="Cidade" readonly required>
+            <input type="text" name="cidade" id="cidade" placeholder="Cidade" readonly required>
          </div>
 
           <div class="input-group">
         <label for="estado">UF*</label>
-            <input type="text" id="estado" placeholder="UF" readonly required>
+            <input type="text" name="estado" id="estado" placeholder="UF" readonly required>
          </div>
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Limpar campos</button>
+        <button type="submit">Cadastrar pessoa</button>
     </form>
     <div id="area-cadastrados">
         <h2>Pessoas cadastradas</h2>
@@ -86,5 +86,8 @@ Use apenas dados fictícios. O LocalStorage mantém as informações neste naveg
         <div id="lista-pessoas"></div>
     </div>
  </section>
+     <footer>
+        <p>Conecta Senai · Ambiente demonstrativo. Utilize somente informações fictícias.</p>
+    </footer>
 </body>
 </html>

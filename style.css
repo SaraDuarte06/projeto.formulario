@@ -1,0 +1,266 @@
+/* Reset e Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #1e293b;
+    line-height: 1.5;
+    padding-bottom: 50px;
+}
+
+/* Barra Superior (Header - primeira div do body) */
+body > div:first-of-type {
+    background-color: #0b162c;
+    color: #ffffff;
+    padding: 18px 8%;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(11, 22, 44, 0.15);
+}
+
+body > div:first-of-type h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+body > div:first-of-type span {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #94a3b8;
+}
+
+/* Centralização do conteúdo principal */
+body > h2,
+body > span,
+body > h3,
+body > p,
+section#Contato {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* "Pessoas da turma" */
+body > h2 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #2563eb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+/* "Cadastro de participantes" */
+body > span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+/* Subtítulo "Registre alunos..." */
+body > h3 {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #64748b;
+    margin-bottom: 22px;
+}
+
+/* Banner Azul de Aviso (LocalStorage) */
+body > p {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    font-size: 0.88rem;
+    color: #1e3a8a;
+    max-width: 1060px;
+}
+
+/* Card Principal (Section #Contato) */
+section#Contato {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 1060px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+section#Contato > h2 {
+    font-size: 1.2rem;
+    color: #0f172a;
+}
+
+section#Contato > p {
+    font-size: 0.85rem;
+    color: #64748b;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 24px;
+}
+
+/* Grade Automática do Formulário (12 colunas virtuais) */
+#form-cadastro {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 18px 16px;
+}
+
+/* Linha 1: Nome (6 col), Data (3 col), Vínculo (3 col) */
+#form-cadastro .form-group:nth-of-type(1) { grid-column: span 6; }
+#form-cadastro .form-group:nth-of-type(2) { grid-column: span 3; }
+#form-cadastro .form-group:nth-of-type(3) { grid-column: span 3; }
+
+/* Linha 2: Turma/Setor (largura total) */
+#form-cadastro .form-group:nth-of-type(4) { grid-column: span 12; }
+
+/* Divisória e Título "Endereço" */
+#form-cadastro > p {
+    grid-column: span 12;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #475569;
+    padding-top: 18px;
+    margin-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Linha 3: CEP (3 col), Logradouro (7 col), Número (2 col) */
+#form-cadastro .input-group:nth-of-type(5) { grid-column: span 3; }
+#form-cadastro .input-group:nth-of-type(6) { grid-column: span 7; }
+#form-cadastro .input-group:nth-of-type(7) { grid-column: span 2; }
+
+/* Linha 4: Complemento (3 col), Bairro (4 col), Cidade (3 col), UF (2 col) */
+#form-cadastro .input-group:nth-of-type(8)  { grid-column: span 3; }
+#form-cadastro .input-group:nth-of-type(9)  { grid-column: span 4; }
+#form-cadastro .input-group:nth-of-type(10) { grid-column: span 3; }
+#form-cadastro .input-group:nth-of-type(11) { grid-column: span 2; }
+
+/* Estilização dos Labels e Campos */
+.form-group,
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: #0f172a;
+    background-color: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+input[readonly] {
+    background-color: #f8fafc;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+/* Botão Cadastrar */
+#form-cadastro button[type="submit"] {
+    grid-column: 10 / 13;
+    justify-self: end;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#form-cadastro button[type="submit"]:hover {
+    background-color: #1e40af;
+}
+
+/* Área de Pessoas Cadastradas */
+#area-cadastrados {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 2px solid #f1f5f9;
+}
+
+#area-cadastrados h2 {
+    font-size: 1.15rem;
+    color: #0f172a;
+}
+
+#contador {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 18px;
+}
+
+#lista-pessoas:empty::before {
+    content: "Nenhuma pessoa cadastrada. Preencha o formulário acima para adicionar a primeira pessoa à turma.";
+    display: block;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Responsividade (Telas menores / Celular) */
+@media (max-width: 850px) {
+    #form-cadastro .form-group,
+    #form-cadastro .input-group,
+    #form-cadastro button[type="submit"] {
+        grid-column: span 12 !important;
+    }
+
+    section#Contato {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding: 20px;
+    }
+
+    body > p {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
