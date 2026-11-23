@@ -86,6 +86,94 @@ Use apenas dados fictícios. O LocalStorage mantém as informações neste naveg
         <div id="lista-pessoas"></div>
     </div>
  </section>
+ <script>
+ document.addEventListener("DOMContentLoaded", function() {
+
+    // BOAS-VINDAS
+    let continuar = confirm("Bem-vindo à página! Deseja continuar?");
+
+    if (!continuar) {
+        window.location.href = "https://www.google.com";
+        return;
+    }
+
+
+    document.getElementById("cep").addEventListener("blur", async function() {
+
+        let cep = this.value.replace(/\D/g, "");
+
+        if (cep.length !== 8) {
+            alert("Digite um CEP válido!");
+            return;
+        }
+
+        try {
+            let resposta = await fetch("https://viacep.com.br/ws/" + cep + "/json/");
+            let dados = await resposta.json();
+
+            if (dados.erro) {
+                alert("CEP não encontrado!");
+                return;
+            }
+
+            document.getElementById("logradouro").value = dados.logradouro || "";
+            document.getElementById("bairro").value = dados.bairro || "";
+            document.getElementById("cidade").value = dados.localidade || "";
+            document.getElementById("estado").value = dados.uf || "";
+
+        } catch (erro) {
+            alert("Não foi possível buscar o endereço!");
+        }
+    });
+
+
+  
+    let totalCadastros = 0;
+
+    const formulario = document.getElementById("form-cadastro");
+    const lista = document.getElementById("lista-pessoas");
+    const contador = document.getElementById("contador");
+
+    formulario.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let nome = document.getElementById("nome").value;
+        let vinculo = document.getElementById("vinculo").value;
+        let turma = document.getElementById("turma").value;
+
+        let pessoa = document.createElement("div");
+
+  let informacoes = document.createElement("span");
+
+ informacoes.textContent = nome + " - " + vinculo + " - " + turma;
+
+ let botaoRemover = document.createElement("button");
+
+ botaoRemover.textContent = "Remover";
+ 
+ botaoRemover.type = "button";
+
+ botaoRemover.addEventListener("click", function() {
+
+    pessoa.remove();
+
+   if (totalCadastros > 1) {
+    totalCadastros--;
+   }
+   contador.textContent = " registros encontrados";
+
+});
+
+ pessoa.appendChild(informacoes);
+
+ pessoa.appendChild(botaoRemover);
+
+ lista.appendChild(pessoa);
+    });
+
+});
+</script>
      <footer>
         <p>Conecta Senai · Ambiente demonstrativo. Utilize somente informações fictícias.</p>
     </footer>
