@@ -211,23 +211,188 @@ input[readonly] {
 #form-cadastro button[type="reset"]:hover {
     background-color: #f8fafc;
 }
-#area-cadastrados {
-    margin-top: 36px;
-    padding-top: 28px;
-    border-top: 2px solid #f1f5f9;
+/* Cartão branco da secção Pessoas Cadastradas */
+.card-cadastrados {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-top: 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f1f5f9;
 }
 
-#area-cadastrados h2 {
-    font-size: 1.15rem;
+/* Cabeçalho com título à esquerda e busca à direita */
+.cabecalho-cadastrados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.cabecalho-cadastrados h2 {
+    margin: 0;
+    font-size: 18px;
     color: #0f172a;
 }
 
-#contador {
-    font-size: 0.85rem;
+.cabecalho-cadastrados #contador {
+    margin: 4px 0 0 0;
+    font-size: 13px;
     color: #64748b;
-    margin-bottom: 18px;
 }
 
+/* Campo de busca com lupa */
+.campo-busca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    width: 260px;
+}
+
+.campo-busca input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 13px;
+    color: #334155;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Tabela e colunas */
+.tabela-container {
+    overflow-x: auto;
+}
+
+.tabela-pessoas {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-pessoas thead th {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.05em;
+    padding: 12px 8px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabela-pessoas tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 0.15s;
+}
+
+.tabela-pessoas tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tabela-pessoas tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.tabela-pessoas td {
+    padding: 16px 8px;
+    vertical-align: middle;
+}
+
+/* Avatar circular com inicial */
+.celula-pessoa {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #e0e7ff;
+    color: #1d4ed8;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.nome-pessoa {
+    display: block;
+    font-size: 14px;
+    color: #0f172a;
+}
+
+.texto-comum {
+    font-size: 13px;
+    color: #1e293b;
+}
+
+.subtexto {
+    display: block;
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+/* Badge azul do Vínculo (Aluno / Professor) */
+.badge-vinculo {
+    display: inline-block;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 4px;
+}
+
+/* Ícones de Ações (Lápis e Lixeira) */
+.texto-direita {
+    text-align: right;
+}
+
+.acoes-tabela {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-icone {
+    background: transparent;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.btn-icone.btn-editar {
+    color: #2563eb;
+}
+
+.btn-icone.btn-editar:hover {
+    background-color: #eff6ff;
+}
+
+.btn-icone.btn-remover {
+    color: #dc2626;
+}
+
+.btn-icone.btn-remover:hover {
+    background-color: #fef2f2;
+}
 #lista-pessoas:empty::before {
     content: "Nenhuma pessoa cadastrada. Preencha o formulário acima para adicionar a primeira pessoa à turma.";
     display: block;

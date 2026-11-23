@@ -14,102 +14,136 @@
     <h2>Pessoas da turma</h2>
     <span>Cadastro de participantes</span>
     <h3>Registre alunos, instrutores e demais pessoas vinculadas à sua turma.</h3>
-    <p>
-Use apenas dados fictícios. O LocalStorage mantém as informações neste navegador e não é adequado para armazenar dados pessoais reais ou sensíveis sem cuidados específicos de segurança e privacidade.</p>
- <section id="Contato">
-    <h2>Novo cadastro</h2>
-    <p>Campos com * são obrigatórios</p>
-    <form id="form-cadastro">
-        <div class="form-group">
-            <label for="nome">Nome Completo*</label>
-            <input type="text" id="nome" name="nome" placeholder="Ex.: João da Silva" required>
-        </div>
-        <div class="form-group">
-            <label for="data">Data de nascimento*</label>
-            <input type="date" id="data" name="data" required>
-        </div>
-        <div class="form-group">
-            <label for="vinculo">Vinculo com o SENAI*</label>
-            <select id="vinculo" name="vinculo" required>
-                <option value="aluno">Aluno</option>
-                <option value="professor">Professor</option>
-                <option value="outros">Outros</option>
-            </select>
-        </div>
-         <div class="form-group">
-            <label for="turma">Turma/Setor*</label>
-            <input type="text" id="turma" name="turma" placeholder="Ex.: Desenvolvimento de Sistemas-2025.1 ou Coordenação" required>
-        </div>
+    <p>Use apenas dados fictícios. O LocalStorage mantém as informações neste navegador e não é adequado para armazenar dados pessoais reais ou sensíveis sem cuidados específicos de segurança e privacidade.</p>
+    
+    <section id="Contato">
+        <h2>Novo cadastro</h2>
+        <p>Campos com * são obrigatórios</p>
+        
+        <form id="form-cadastro">
+            <input type="hidden" id="indice-edicao" value="">
 
-        <p>Endereço</p>
+            <div class="form-group">
+                <label for="nome">Nome Completo*</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex.: João da Silva" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="data">Data de nascimento*</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="vinculo">Vínculo com o SENAI*</label>
+                <select id="vinculo" name="vinculo" required>
+                    <option value="aluno">Aluno</option>
+                    <option value="professor">Professor</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="turma">Turma/Setor*</label>
+                <input type="text" id="turma" name="turma" placeholder="Ex.: Desenvolvimento de Sistemas-2025.1 ou Coordenação" required>
+            </div>
 
-           <div class="input-group">
-            <label for="cep">CEP*</label>
-            <input type="text" name="cep" id="cep" placeholder="00000-000" maxlength="9" required>
+            <p>Endereço</p>
+
+            <div class="input-group">
+                <label for="cep">CEP*</label>
+                <input type="text" name="cep" id="cep" placeholder="00000-000" maxlength="9" required>
+            </div>
+            <div class="input-group">
+                <label for="logradouro">Logradouro*</label>
+                <input type="text" name="logradouro" id="logradouro" placeholder="Rua, avenida..." readonly required>
+            </div>
+            <div class="input-group">
+                <label for="numero">Número*</label>
+                <input type="text" name="numero" id="numero" placeholder="Ex.: 120" required>
+            </div>
+            <div class="input-group">
+                <label for="complemento">Complemento</label>
+                <input type="text" name="complemento" id="complemento" placeholder="Apto., bloco...">
+            </div>
+            <div class="input-group">
+                <label for="bairro">Bairro*</label>
+                <input type="text" name="bairro" id="bairro" placeholder="Bairro" readonly required>
+            </div>
+            <div class="input-group">
+                <label for="cidade">Cidade*</label>
+                <input type="text" name="cidade" id="cidade" placeholder="Cidade" readonly required>
+            </div>
+            <div class="input-group">
+                <label for="estado">UF*</label>
+                <input type="text" name="estado" id="estado" placeholder="UF" readonly required>
+            </div>
+
+           <button type="reset">Limpar campos</button>
+           <button type="submit" id="btn-salvar">+ Cadastrar pessoa</button> 
+        </form>
+        
+       <div id="area-cadastrados" class="card-cadastrados">
+    <div class="cabecalho-cadastrados">
+        <div>
+            <h2>Pessoas cadastradas</h2>
+            <p id="contador">0 registros encontrados</p>
         </div>
-        <div class="input-group">
-            <label for="logradouro">Logradouro*</label>
-            <input type="text" name="logradouro" id="logradouro" placeholder="Rua,avenida..." readonly required>
+        <div class="campo-busca">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="busca" placeholder="Buscar por nome, turma...">
         </div>
-
-        <div class="input-group">
-            <label for="numero">Número*</label>
-            <input type="text" name="numero" id="numero" placeholder="Ex.:120" required>
-        </div>
-
-        <div class="input-group">
-            <label for="complemento">Complemento</label>
-            <input type="text" name="complemento" id="complemento" placeholder="Apto.,bloco...">
-        </div>
-
-        <div class="input-group">
-            <label for="bairro">Bairro*</label>
-            <input type="text" name="bairro" id="bairro" placeholder="Bairro" readonly required>
-        </div>
-
-        <div class="input-group">
-        <label for="cidade">Cidade*</label>
-            <input type="text" name="cidade" id="cidade" placeholder="Cidade" readonly required>
-         </div>
-
-          <div class="input-group">
-        <label for="estado">UF*</label>
-            <input type="text" name="estado" id="estado" placeholder="UF" readonly required>
-         </div>
-
-       <button type="reset">Limpar campos</button>
-       <button type="submit">Cadastrar pessoa</button> 
-    </form>
-    <div id="area-cadastrados">
-        <h2>Pessoas cadastradas</h2>
-        <p id="contador">0 registros encontrados</p>
-        <div id="lista-pessoas"></div>
     </div>
- </section>
- <script>
- document.addEventListener("DOMContentLoaded", function() {
 
-    // BOAS-VINDAS
-    let continuar = confirm("Bem-vindo à página! Deseja continuar?");
+    <div class="tabela-container">
+        <table class="tabela-pessoas">
+            <thead>
+                <tr>
+                    <th>PESSOA</th>
+                    <th>NASCIMENTO</th>
+                    <th>VÍNCULO / TURMA OU SETOR</th>
+                    <th>ENDEREÇO</th>
+                    <th class="texto-direita">AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody id="lista-pessoas">
+            </tbody>
+        </table>
+    </div>
+</div>
+    </section>
 
-    if (!continuar) {
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Dica: Se esse confirm for irritante para testes, você pode comentá-lo, mas mantive conforme seu pedido:
+    if (!confirm("Bem-vindo à página! Deseja continuar?")) {
         window.location.href = "https://www.google.com";
         return;
     }
 
+    const formulario = document.getElementById("form-cadastro");
+    const lista = document.getElementById("lista-pessoas");
+    const contador = document.getElementById("contador");
+    const indiceEdicaoInput = document.getElementById("indice-edicao");
+    const btnSalvar = document.getElementById("btn-salvar");
+    const inputBusca = document.getElementById("busca");
+
+    const obterPessoas = () => JSON.parse(localStorage.getItem("conectasenai_pessoas")) || [];
+    const salvarPessoas = (dados) => localStorage.setItem("conectasenai_pessoas", JSON.stringify(dados));
+    const formatarData = (dataISO) => dataISO ? dataISO.split("-").reverse().join("/") : "";
 
     document.getElementById("cep").addEventListener("blur", async function() {
-
-        let cep = this.value.replace(/\D/g, "");
-
+        const cep = this.value.replace(/\D/g, "");
         if (cep.length !== 8) {
             alert("Digite um CEP válido!");
             return;
         }
 
         try {
-            let resposta = await fetch("https://viacep.com.br/ws/" + cep + "/json/");
-            let dados = await resposta.json();
+            const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            const dados = await resposta.json();
 
             if (dados.erro) {
                 alert("CEP não encontrado!");
@@ -120,61 +154,175 @@ Use apenas dados fictícios. O LocalStorage mantém as informações neste naveg
             document.getElementById("bairro").value = dados.bairro || "";
             document.getElementById("cidade").value = dados.localidade || "";
             document.getElementById("estado").value = dados.uf || "";
-
-        } catch (erro) {
+        } catch {
             alert("Não foi possível buscar o endereço!");
         }
     });
 
+    function carregarPessoas(filtro = "") {
+        const termo = filtro.toLowerCase();
+        const pessoas = obterPessoas();
+        
+        const pessoasFiltradas = pessoas.filter(p => 
+            p.nome.toLowerCase().includes(termo) || p.turma.toLowerCase().includes(termo)
+        );
 
-  
-    let totalCadastros = 0;
+        lista.innerHTML = "";
 
-    const formulario = document.getElementById("form-cadastro");
-    const lista = document.getElementById("lista-pessoas");
-    const contador = document.getElementById("contador");
+        pessoasFiltradas.forEach(pessoa => {
+            const tr = document.createElement("tr");
+            const inicial = pessoa.nome ? pessoa.nome.charAt(0).toUpperCase() : "?";
+            const vinculoFormatado = pessoa.vinculo ? pessoa.vinculo.charAt(0).toUpperCase() + pessoa.vinculo.slice(1) : "";
+            const dataCadastro = pessoa.dataCadastro || new Date().toLocaleDateString("pt-BR");
+
+            tr.innerHTML = `
+                <td>
+                    <div class="celula-pessoa">
+                        <div class="avatar">${inicial}</div>
+                        <div>
+                            <strong class="nome-pessoa">${pessoa.nome}</strong>
+                            <span class="subtexto">Cadastrado em ${dataCadastro}</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="texto-comum">${formatarData(pessoa.data)}</td>
+                <td>
+                    <div class="celula-vinculo">
+                        <span class="badge-vinculo">${vinculoFormatado}</span>
+                        <span class="subtexto">${pessoa.turma}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="celula-endereco">
+                        <span class="texto-comum">${pessoa.logradouro}, ${pessoa.numero}</span>
+                        <span class="subtexto">${pessoa.cidade} / ${pessoa.estado}</span>
+                    </div>
+                </td>
+                <td class="texto-direita">
+                    <div class="acoes-tabela">
+                        <button type="button" class="btn-icone btn-editar" title="Editar" data-id="${pessoa.id}">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                        </button>
+                        <button type="button" class="btn-icone btn-remover" title="Remover" data-id="${pessoa.id}">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                        </button>
+                    </div>
+                </td>
+            `;
+            lista.appendChild(tr);
+        });
+
+        contador.textContent = `${pessoasFiltradas.length} ${pessoasFiltradas.length === 1 ? "registro encontrado" : "registros encontrados"}`;
+    }
+
+lista.addEventListener("click", function(event) {
+    // Acha a linha <tr> mais próxima do elemento clicado
+    const tr = event.target.closest("tr");
+    if (!tr) return;
+
+    // Descobre qual o índice dessa linha dentro da tabela atual
+    const linhas = Array.from(lista.querySelectorAll("tr"));
+    const indexVisual = linhas.indexOf(tr);
+
+    if (indexVisual === -1) return;
+
+    // Filtra exatamente as mesmas pessoas que estão aparecendo na tela agora
+    const termo = inputBusca.value.toLowerCase();
+    const pessoas = obterPessoas();
+    const pessoasFiltradas = pessoas.filter(p => 
+        p.nome.toLowerCase().includes(termo) || p.turma.toLowerCase().includes(termo)
+    );
+
+    const pessoaAlvo = pessoasFiltradas[indexVisual];
+    if (!pessoaAlvo) return;
+
+    // Se clicou no botão de Editar (ou em qualquer elemento dentro dele)
+    if (event.target.closest(".btn-editar") || event.target.closest("button[title='Editar']")) {
+        ["nome", "data", "vinculo", "turma", "cep", "logradouro", "numero", "complemento", "bairro", "cidade", "estado"]
+            .forEach(campo => {
+                const el = document.getElementById(campo);
+                if (el) el.value = pessoaAlvo[campo] || "";
+            });
+
+        // Salva o ID real da pessoa no input oculto de edição
+        indiceEdicaoInput.value = pessoaAlvo.id;
+        btnSalvar.textContent = "Salvar alterações";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Se clicou no botão de Remover (ou em qualquer elemento dentro dele)
+    if (event.target.closest(".btn-remover") || event.target.closest("button[title='Remover']")) {
+        if (confirm(`Deseja realmente excluir o cadastro de ${pessoaAlvo.nome}?`)) {
+            // Remove do array principal filtrando pelo ID único
+            const novasPessoas = pessoas.filter(item => item.id !== pessoaAlvo.id);
+            salvarPessoas(novasPessoas);
+            carregarPessoas(inputBusca.value);
+        }
+    }
+});
+    inputBusca.addEventListener("input", () => carregarPessoas(inputBusca.value));
 
     formulario.addEventListener("submit", function(event) {
-
         event.preventDefault();
+        const pessoas = obterPessoas();
+        const idEdicao = indiceEdicaoInput.value;
 
-        let nome = document.getElementById("nome").value;
-        let vinculo = document.getElementById("vinculo").value;
-        let turma = document.getElementById("turma").value;
+        if (idEdicao === "") {
+            // Criando novo registro com ID único baseado no tempo atual
+            const novaPessoa = {
+                id: Date.now(),
+                nome: document.getElementById("nome").value,
+                data: document.getElementById("data").value,
+                vinculo: document.getElementById("vinculo").value,
+                turma: document.getElementById("turma").value,
+                cep: document.getElementById("cep").value,
+                logradouro: document.getElementById("logradouro").value,
+                numero: document.getElementById("numero").value,
+                complemento: document.getElementById("complemento").value,
+                bairro: document.getElementById("bairro").value,
+                cidade: document.getElementById("cidade").value,
+                estado: document.getElementById("estado").value,
+                dataCadastro: new Date().toLocaleDateString("pt-BR")
+            };
+            pessoas.push(novaPessoa);
+        } else {
+            // Editando registro existente pelo ID
+            const index = pessoas.findIndex(item => item.id === Number(idEdicao));
+            if (index !== -1) {
+                pessoas[index] = {
+                    ...pessoas[index], // Mantém o ID e a data de cadastro original
+                    nome: document.getElementById("nome").value,
+                    data: document.getElementById("data").value,
+                    vinculo: document.getElementById("vinculo").value,
+                    turma: document.getElementById("turma").value,
+                    cep: document.getElementById("cep").value,
+                    logradouro: document.getElementById("logradouro").value,
+                    numero: document.getElementById("numero").value,
+                    complemento: document.getElementById("complemento").value,
+                    bairro: document.getElementById("bairro").value,
+                    cidade: document.getElementById("cidade").value,
+                    estado: document.getElementById("estado").value
+                };
+            }
+        }
 
-        let pessoa = document.createElement("div");
-
-  let informacoes = document.createElement("span");
-
- informacoes.textContent = nome + " - " + vinculo + " - " + turma;
-
- let botaoRemover = document.createElement("button");
-
- botaoRemover.textContent = "Remover";
- 
- botaoRemover.type = "button";
-
- botaoRemover.addEventListener("click", function() {
-
-    pessoa.remove();
-
-   if (totalCadastros > 1) {
-    totalCadastros--;
-   }
-   contador.textContent = " registros encontrados";
-
-});
-
- pessoa.appendChild(informacoes);
-
- pessoa.appendChild(botaoRemover);
-
- lista.appendChild(pessoa);
+        salvarPessoas(pessoas);
+        formulario.reset();
+        indiceEdicaoInput.value = "";
+        btnSalvar.textContent = "+ Cadastrar pessoa";
+        carregarPessoas(inputBusca.value);
     });
 
+    formulario.addEventListener("reset", function() {
+        indiceEdicaoInput.value = "";
+        btnSalvar.textContent = "+ Cadastrar pessoa";
+    });
+
+    carregarPessoas();
 });
 </script>
-     <footer>
+
+    <footer>
         <p>Conecta Senai · Ambiente demonstrativo. Utilize somente informações fictícias.</p>
     </footer>
 </body>
